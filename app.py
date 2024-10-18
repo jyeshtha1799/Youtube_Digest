@@ -129,3 +129,19 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Streamlit UI components with centered layout
+st.markdown("<h1>🎬 TubeDigest: Your YouTube Video Summarizer</h1>", unsafe_allow_html=True)
+st.markdown("<h3>Unlock the essence of YouTube videos in seconds!</h3>", unsafe_allow_html=True)
+
+youtube_link = st.text_input("Enter YouTube Video Link:", value="", key="1")
+if youtube_link:
+    video_id = youtube_link.split("=")[1]
+    st.image(f"http://img.youtube.com/vi/{video_id}/0.jpg", use_column_width=True)
+
+if st.button("Get Video Insights"):
+    transcript_text = extract_transcript_details(youtube_link)
+    if transcript_text:
+        summary = generate_gemini_content(transcript_text, prompt)
+        st.markdown('<h2 class="video-insights">📝 Video Insights:</h2>', unsafe_allow_html=True)
+        st.markdown(f'<div class="video-insights"><p>{summary}</p></div>', unsafe_allow_html=True)
