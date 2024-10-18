@@ -145,3 +145,17 @@ if st.button("Get Video Insights"):
         summary = generate_gemini_content(transcript_text, prompt)
         st.markdown('<h2 class="video-insights">📝 Video Insights:</h2>', unsafe_allow_html=True)
         st.markdown(f'<div class="video-insights"><p>{summary}</p></div>', unsafe_allow_html=True)
+
+
+# Footer
+st.markdown("""
+<div class="footer">
+    <p>Made with ❤️ by Jyeshtha Prabhu</p>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/jyeshthaprabhu/" target="_blank">LinkedIn</a>
+        <a href="https://medium.com/@jyeshthawork" target="_blank">Medium</a>
+        <a href="https://github.com/jyeshtha1799" target="_blank">GitHub</a>
+    </div>
+    <p>© 2023 TubeDigest. All rights reserved.</p>
+</div>
+""", unsafe_allow_html=True)
