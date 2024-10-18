@@ -66,3 +66,66 @@ def generate_gemini_content(transcript_text, prompt):
     except Exception as e:
         st.error(f"An unexpected error occurred: {e}")
         return "Error generating summary. Please try again."
+
+
+# Updated CSS for Video Insights to be black
+st.markdown(
+    """
+    <style>
+    .main {
+        display: flex;
+        justify-content: center;  /* Center horizontally */
+        align-items: center;  /* Center vertically */
+        height: 100vh;  /* Full height */
+        background-color: #C1E1C1;  /* Updated background color */
+    }
+    /* Targeting the main Streamlit container */
+    .stApp {
+        background-color: #C1E1C1;  /* Ensure the background is applied */
+    }
+    h1, h2, h3 {
+        text-align: center; /* Center-align all headers */
+        margin-bottom: 1.5rem;
+        color: #C70039;  /* Dark red for headers */
+    }
+    .stTextInput > div > div > input {
+        color: #33333;
+        background-color: #FFD700;  /* Yellow background color for the search bar */
+        border: 2px solid #9478FA;
+        width: 100%;  /* Full width to avoid black side patches */
+        padding: 0.5rem; /* Add padding for better alignment */
+        margin: 0 auto; /* Center the search bar */
+        display: block;
+    }
+    .stButton>button {
+        background-color: #C70039;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin: 10px auto;  /* Center the button */
+        display: block;     /* Block display for centering */
+    }
+    .stButton>button:hover {
+        background-color: #7B5FD9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    body {
+        background-color: #C1E1C1;  /* Updated background color for the page */
+    }
+    /* Setting Video Insights text and its contents to black */
+    .video-insights h2, .video-insights p, .video-insights ul, .video-insights li {
+        color: black;  /* Black color for video insights section */
+    }
+    .footer {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1rem;
+        color: #333333;  /* Dark gray footer text */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
