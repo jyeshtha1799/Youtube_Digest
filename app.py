@@ -12,7 +12,7 @@ load_dotenv()
 
 
 # Use environment variable
-api_key = os.getenv("GOOGLE_API_KEY")
+api_key = os.${{ secrets.GOOGLE_API_KEY }}
 
 if not api_key:
     st.error("GOOGLE_API_KEY not found. Please set the API key in your .env file or pass it directly.")
