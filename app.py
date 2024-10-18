@@ -42,3 +42,27 @@ def extract_transcript_details(youtube_video_url, language_code="en"):
         st.error(f"An error occurred: {str(e)}")
         return None
 
+# Updated function to handle various response structures
+def generate_gemini_content(transcript_text, prompt):
+    model = genai.GenerativeModel("gemini-pro")
+    try:
+        response = model.generate_content(prompt + transcript_text)
+        print("Full API Response:", response)
+        if response and hasattr(response, "text"):
+            return response.text
+        elif response and hasattr(response, "candidates") and response.candidates:
+            candidate = response.candidates[0]
+            if hasattr(candidate, "text"):
+                return candidate.text
+            elif hasattr(candidate, "finish_message"):
+                return candidate.finish_message  
+            else:
+                return "The response did not contain a valid summary. Try with another video."
+        else:
+            return "The response did not return a valid summary. Try with another video."
+    except AttributeError as e:
+        st.error(f"An attribute error occurred while processing the response: {e}")
+        return "Error processing the summary due to an unexpected response structure."
+    except Exception as e:
+        st.error(f"An unexpected error occurred: {e}")
+        return "Error generating summary. Please try again."
